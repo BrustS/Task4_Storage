@@ -7,6 +7,7 @@ import by.brust.animalslist.data.Animal
 import by.brust.animalslist.data.AnimalDatabase
 
 var sortSetting : String = "name"
+var isUseRoom : Boolean = true
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,5 +1,6 @@
 package by.brust.animalslist.navi
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -47,13 +48,20 @@ class UpdateFragment : Fragment() {
             updateAnimalInfo()
         }
 
-        //Click image button "Delete"
+        //Click image button "Delete" and
         binding.deleteButton.setOnClickListener {
-            animalViewModel.delete(args.currentAnimal)
-            Toast.makeText(requireContext(), " Successfully deleted info", Toast.LENGTH_LONG).show()
-            Navigation.findNavController(binding.root).navigate(R.id.action_updateFragment_to_mainFragment)
+            deleteAnimal()
+
         }
         return binding.root
+    }
+
+    private fun deleteAnimal() {
+        val builder = AlertDialog.Builder(requireContext())
+        animalViewModel.delete(args.currentAnimal)
+
+        Toast.makeText(requireContext(), " Successfully deleted info", Toast.LENGTH_LONG).show()
+        Navigation.findNavController(binding.root).navigate(R.id.action_updateFragment_to_mainFragment)
     }
 
     // Update information about animal and show Toast
