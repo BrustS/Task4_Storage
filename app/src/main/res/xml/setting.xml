@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="use_room"
+        android:summary="use Room,if inactive switcher then uses Cursor"
+        android:title="Use Room" />
+    <Preference
+        android:key="@string/sort_name"
+        android:title="Sort by name" />
+    <Preference
+        android:key="@string/sort_age"
+        android:title="Sort by age" />
+    <Preference
+        android:key="@string/sort_breed"
+        android:title="Sort by breed" />
+    <Preference
+        android:key="@string/back_btn"
+        android:title="Back" />
+
+</PreferenceScreen>
