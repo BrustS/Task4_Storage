@@ -9,4 +9,5 @@
     <string name="add_animal">Add Animal</string>
     <string name="animals">Animals</string>
     <string name="update_info">Update Info</string>
+    <string name="switch_room_string">use Room, if not included, then SQLOpenHelper will be used</string>
 </resources>

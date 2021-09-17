@@ -3,10 +3,11 @@ package by.brust.animalslist.data
 
 import android.app.Application
 import androidx.lifecycle.*
+import androidx.room.RoomDatabase
+import by.brust.animalslist.data.cursor.AnimalSQLOpenHelper
+import by.brust.animalslist.data.room.AnimalDatabase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import java.lang.IllegalArgumentException
 
 class AnimalViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -14,9 +15,11 @@ class AnimalViewModel(application: Application) : AndroidViewModel(application) 
     val allAnimals : LiveData<List<Animal>>
     private val repository: AnimalRepository
 
+
     init {
-        val animalDao = AnimalDatabase.getAnimalDatabase(application).animalDao()
-        repository = AnimalRepository(animalDao)
+        val animalDatabase = AnimalDatabase.getAnimalDatabase(application)
+        repository = AnimalRepository(animalDatabase,
+            AnimalSQLOpenHelper(application.applicationContext))
         allAnimals = repository.allAnimals
     }
 

@@ -1,12 +1,18 @@
 package by.brust.animalslist.data
 
 import androidx.lifecycle.LiveData
+import by.brust.animalslist.data.cursor.AnimalOpenHelperDao
+import by.brust.animalslist.data.cursor.AnimalSQLOpenHelper
+import by.brust.animalslist.data.room.AnimalDao
+import by.brust.animalslist.data.room.AnimalDatabase
+import by.brust.animalslist.isUseRoom
 import by.brust.animalslist.sortSetting
-import kotlinx.coroutines.flow.Flow
 
-class AnimalRepository(private val animalDao: AnimalDao) {
+class AnimalRepository (private val roomDatabase :AnimalDatabase,
+private val openHelperDatabase: AnimalSQLOpenHelper) {
 
-    //retrieving data according to user-selected sorting
+    private val animalDao = if (isUseRoom) roomDatabase.animalDao()
+    else openHelperDatabase.openHelperDao
     val allAnimals: LiveData<List<Animal>> = when (sortSetting) {
         "name" -> animalDao.getAllAnimalsByName()
         "age" -> animalDao.getAllAnimalsByAge()

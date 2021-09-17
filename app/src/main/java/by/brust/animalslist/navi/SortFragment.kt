@@ -6,7 +6,9 @@ import androidx.navigation.Navigation
 
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import by.brust.animalslist.R
+import by.brust.animalslist.isUseRoom
 import by.brust.animalslist.sortSetting
 
 class SortFragment : PreferenceFragmentCompat() {
@@ -23,7 +25,10 @@ class SortFragment : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         // Init preference
+         isUseRoom = prefs.getBoolean("switch_room",true)
          sort_name = findPreference<Preference>(getString(R.string.sort_name))
          sort_age = findPreference<Preference>(getString(R.string.sort_age))
          sort_breed = findPreference<Preference>(getString(R.string.sort_breed))

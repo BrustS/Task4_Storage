@@ -14,4 +14,5 @@
     <string name="sort_age">sort_by_age</string>
     <string name="sort_name">sort_by_name</string>
     <string name="update_info">Update Info</string>
+    <string name="switch_room_string">use Room, if not included, then SQLOpenHelper will be used</string>
 </resources>
